@@ -3,7 +3,7 @@
 $stdin = fopen("php://stdin", "r");
 
 while (true) {
-	$input = fgets($stdin);
+	$input = trim(fgets($stdin));
 
 	if (!is_numeric($input)) {
 		echo "Invalid number.\n";
