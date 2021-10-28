@@ -3,3 +3,4 @@
 /php/vendor/
 /php/composer.lock
 /composer.phar
+/runner.bat

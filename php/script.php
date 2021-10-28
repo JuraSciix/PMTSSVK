@@ -74,7 +74,7 @@ function status($rawTokens) {
         $year = (int) date('Y', $time);
         $pm = date2pm($time);
         $text = status_prepare_text($year, $pm);
-        info("Обновление статусов ($count): $text");
+        debug("Обновление статусов ($count): $text");
 
         foreach ($tokens as $short => $token) {
             try {
@@ -101,13 +101,13 @@ function status($rawTokens) {
     }
 }
 
-function create_tokens($access_tokens) {
-    if (is_array($access_tokens) === false) {
-        $access_tokens = explode(",", $access_tokens);
+function create_tokens($rawTokens) {
+    if (is_array($rawTokens) === false) {
+        $rawTokens = explode(",", $rawTokens);
     }
     $tokens = [];
 
-    foreach ($access_tokens as $token) {
+    foreach ($rawTokens as $token) {
         $key = substr($token, 0, 8) . '...'; // 4bf94b2b...
         $tokens[$key] = vk_api::create(trim($token), VERSION);
     }
